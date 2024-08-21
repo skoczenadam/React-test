@@ -1,20 +1,5 @@
-/* eslint-disable react/prop-types */
-import clsx from "clsx";
-import css from "./Alert.module.css";
-import { RxCodesandboxLogo } from "react-icons/rx";
+// // import { useState } from 'react';
 
-export const Alert = ({ variant, outlined, elevated, children }) => {
-  return (
-    <>
-    <p
-      className={clsx(css[variant], {
-        [css.isOutlined]: outlined,
-        [css.isElevated]: elevated,
-      })}
-    >
-      {children}
-    </p>
-      <p><RxCodesandboxLogo className="my-icon" size="100" /> {name}</p>
-      </>
-  );
-};
+// export const ClickCounter = ({ value, onUpdate }) => {
+// 	return <button onClick={onUpdate}>Current: {value}</button>
+// };

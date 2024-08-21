@@ -1,21 +1,37 @@
-import { Alert } from "./Alert";
+/* eslint-disable no-unused-vars */
+// import { ClickCounter } from "./Alert";
+
+import { useState } from 'react';
 
 const App = () => {
+  const [values, setValues] = useState({
+    x: 0,
+    y: 0,
+	  });
+	
+	const updateX = () => {
+			setValues({
+			...values,
+			x: values.x + 1
+		});
+	};
+
+	const updateY = () => {
+		setValues({
+			...values,
+			y: values.y + 1
+		});
+	};
+
   return (
-    <>
-      <Alert variant="info">
-        Would you like to browse our recommended products?
-      </Alert>
-      <Alert variant="error">
-        There was an error during your last transaction
-      </Alert>
-      <Alert variant="success">
-        Payment received, thank you for your purchase
-      </Alert>
-      <Alert variant="warning">
-        Please update your profile contact information
-      </Alert>
-    </>
+    <div>
+      <p>
+        x: {values.x}, y: {values.y}
+      </p>
+
+      <button onClick={updateX}>Update x</button>
+      <button onClick={updateY}>Update y</button>
+    </div>
   );
 };
 
