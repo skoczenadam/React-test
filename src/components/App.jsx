@@ -1,36 +1,34 @@
 /* eslint-disable no-unused-vars */
 // import { ClickCounter } from "./Alert";
 
-import { useState } from 'react';
+import { useState, useEffect } from "react";
 
 const App = () => {
-  const [values, setValues] = useState({
-    x: 0,
-    y: 0,
-	  });
-	
-	const updateX = () => {
-			setValues({
-			...values,
-			x: values.x + 1
-		});
-	};
+  const [clicks, setClicks] = useState(() => {
+	// Odczyt wartości według klucza
+  const savedClicks = window.localStorage.getItem("saved-clicks");
 
-	const updateY = () => {
-		setValues({
-			...values,
-			y: values.y + 1
-		});
-	};
+	// Jeśli jest coś do oczytania, zwracamy tę wartość 
+  // jako początkową wartość stanu
+  if (savedClicks !== null) {
+    return ~~savedClicks;
+  }
+
+	// W przeciwnym razie zwracamy 
+	// dowolną domyślną wartość
+  return 0;
+});
+
+  useEffect(() => {
+    window.localStorage.setItem("saved-clicks", clicks);
+  }, [clicks]);
 
   return (
     <div>
-      <p>
-        x: {values.x}, y: {values.y}
-      </p>
-
-      <button onClick={updateX}>Update x</button>
-      <button onClick={updateY}>Update y</button>
+      <button onClick={() => setClicks(clicks + 1)}>
+        You clicked {clicks} times
+      </button>
+      <button onClick={() => setClicks(0)}>Reset</button>
     </div>
   );
 };
