@@ -2,33 +2,20 @@
 // import { ClickCounter } from "./Alert";
 
 import { useState, useEffect } from "react";
+import { LoginForm } from "./Alert";
 
 const App = () => {
-  const [clicks, setClicks] = useState(() => {
-	// Odczyt wartości według klucza
-  const savedClicks = window.localStorage.getItem("saved-clicks");
-
-	// Jeśli jest coś do oczytania, zwracamy tę wartość 
-  // jako początkową wartość stanu
-  if (savedClicks !== null) {
-    return ~~savedClicks;
-  }
-
-	// W przeciwnym razie zwracamy 
-	// dowolną domyślną wartość
-  return 0;
-});
-
-  useEffect(() => {
-    window.localStorage.setItem("saved-clicks", clicks);
-  }, [clicks]);
+  // Funkcja callback dla przetwarzania submitów formularzy
+  const handleLogin = (userData) => {
+    // Wykonanie niezbędnych operacji na danych
+    console.log(userData);
+  };
 
   return (
     <div>
-      <button onClick={() => setClicks(clicks + 1)}>
-        You clicked {clicks} times
-      </button>
-      <button onClick={() => setClicks(0)}>Reset</button>
+      <h1>Please login to your account!</h1>
+      {/* Przesyłanie callbacku jako propsa formularza */}
+      <LoginForm onSubmit={handleLogin} />
     </div>
   );
 };
