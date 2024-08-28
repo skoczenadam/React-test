@@ -4,19 +4,24 @@
 // 	return <button onClick={onUpdate}>Current: {value}</button>
 // };
 
-import { useState } from "react";
+// import { useState } from "react";
+// import { useId } from "react";
 
-export const SearchBar = () => {
-  const [inputValue, setInputValue] = useState("");
+// export const LangSwitcher = ({ value, onSelect }) => {
+//   const selectId = useId();
 
-  const handleChange = (evt) => {
-    setInputValue(evt.target.value);
-  };
-
-  return (
-    <div>
-      <input type="text" value={inputValue} onChange={handleChange} />
-      <p>{inputValue}</p>
-    </div>
-  );
-};
+//   return (
+//     <div>
+//       <label htmlFor={selectId}>Choose language</label>
+//       <select
+//         id={selectId}
+//         value={value}
+//         onChange={(evt) => onSelect("evt.target.value")}
+//       >
+//         <option value="uk">Ukrainian</option>
+//         <option value="en">English</option>
+//         <option value="pl">Polish</option>
+//       </select>
+//     </div>
+//   );
+// };
